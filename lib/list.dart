@@ -74,6 +74,7 @@ class MyList extends StatelessWidget {
                   leading: Image.network(dataFromApi[index]['url']!),
                   title: Text(dataFromApi[index]['text']!),
                   subtitle: Text(dataFromApi[index]['subtitle']!),
+                  trailing: Text(dataFromApi[index]['date']!),
                 );
               },
               separatorBuilder: (BuildContext context, int index) {
