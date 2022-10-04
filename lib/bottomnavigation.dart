@@ -9,15 +9,18 @@ class MyNav extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: CustomBottomNavigationBar(),
     );
   }
 }
 
 class CustomBottomNavigationBar extends StatefulWidget {
+  const CustomBottomNavigationBar({super.key});
+
   @override
-  _CustomBottomNavigationBarState createState() =>
+  State<CustomBottomNavigationBar> createState() =>
       _CustomBottomNavigationBarState();
 }
 
@@ -29,11 +32,33 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     });
   }
 
+  final List<Widget> _page = [
+    const Text('HomePage'),
+    const Text('BussinessPage'),
+    const TextField(),
+    const Text('SettingPage'),
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      body: Center(
+        child: IndexedStack(
+          alignment: AlignmentDirectional.center,
+          index: _selectedIndex,
+          children: const [
+            Text('Home Page'),
+            Text('Bussiness Page'),
+            TextField(),
+            Text('Setting Page'),
+          ],
+        ),
+      ),
       bottomNavigationBar: BottomNavigationBar(
-        type: BottomNavigationBarType.shifting,
+        type: BottomNavigationBarType.fixed,
+        // mouseCursor: SystemMouseCursors.forbidden,
+        showUnselectedLabels: true,
+        backgroundColor: Colors.grey[200],
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
@@ -53,10 +78,11 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Setting',
-            backgroundColor: Colors.black,
+            backgroundColor: Colors.blueGrey,
           ),
         ],
-        selectedItemColor: Colors.white,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.blueGrey,
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,
       ),
