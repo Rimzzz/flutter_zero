@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyPageNav());
+  runApp(const MyNamedRoute());
 }
 
-class MyPageNav extends StatelessWidget {
-  const MyPageNav({super.key});
+class MyNamedRoute extends StatelessWidget {
+  const MyNamedRoute({super.key});
 
   @override
   Widget build(BuildContext context) {
