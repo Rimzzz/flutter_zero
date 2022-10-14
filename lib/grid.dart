@@ -5,7 +5,7 @@ void main() {
 }
 
 class MyGrid extends StatelessWidget {
-  // const MyGrid({super.key});
+  MyGrid({super.key});
 
   final _colors = <int>[100, 200, 300, 400, 500, 600];
 
